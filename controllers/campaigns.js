@@ -5,7 +5,7 @@ const Campaign = require('../models/Campaign')
 exports.getCampaigns = async (req, res, next) => {
   try {
     const campaigns = await Campaign.find();
-    res.status(200).json({ success: true, data: campaigns });
+    res.status(200).json({ success: true, count: campaigns.length, data: campaigns });
   } catch (err) {
     res.status(400).json({ success: false });
   };
@@ -47,19 +47,35 @@ exports.createCampaign = async (req, res, next) => {
 // Update single Campaign
 // PUT /api/v1/campaigns/:id
 // Private
-exports.updateCampaign = (req, res, next) => {
-  res.status(200).json({
-    success: true,
-    msg: `Update Campaign ${req.params.id}`
-  });
+exports.updateCampaign = async (req, res, next) => {
+  try {
+    const campaign = await Campaign.findByIdAndUpdate(req.params.id, req.body, {
+      new: true,
+      runValidators: true
+    });
+
+    if (!campaign) {
+      return res.status(400).json({ success: false });
+    }
+
+    res.status(200).json({ success: true, data: campaign });
+  } catch (err) {
+    res.status(400).json({ success: false });
+  }
 }
 
 // Delete single Campaign
 // Delete /api/v1/campaigns/:id
 // Private
-exports.deleteCampaign = (req, res, next) => {
-  res.status(200).json({
-    success: true,
-    msg: `Delete Campaign ${req.params.id}`
-  });
+exports.deleteCampaign = async (req, res, next) => {
+  try {
+    const campaign = await Campaign.findByIdAndDelete(req.params.id);
+
+    if (!campaign) {
+      return res.status(400).json({ sucess: false });
+    }
+    res.status(200).json({ success: true, data: {} })
+  } catch (err) {
+    res.status(400).json({ success: false });
+  }
 }
