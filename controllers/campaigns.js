@@ -1,3 +1,4 @@
+const Campaign = require('../models/Campaign')
 // Get All Campaigns
 // GET /api/v1/campaigns
 // Public
@@ -19,12 +20,14 @@ exports.getCampaign = (req, res, next) => {
 }
 
 // Create single Campaign
-// POST /api/v1/campaigns/:id
+// POST /api/v1/campaigns
 // Private
 exports.createCampaign = (req, res, next) => {
+  console.log(req.body)
   res.status(200).json({
     success: true,
-    msg: 'Create new campaign'
+    msg: 'Create new campaign',
+    body: req.body
     });
 }
 
