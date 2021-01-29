@@ -1,0 +1,35 @@
+{
+  "customerId": "id",
+  "count": "Number",
+  "customer": [
+    "name",
+    "plan",
+    [
+      "customerId",
+      "oneTimeFee",
+      "recurring",
+      [
+        "planId",
+        "monthly",
+        "quarterly",
+        "semiAnnually",
+        "annually"
+      ]
+    ],
+    "planRenewalDate",
+    "typeOfIndustry",
+    [
+      "customerId",
+      "industry",
+      [
+        "saas",
+        "non-profit",
+        "individual",
+        "forProfit"
+      ]
+    ],
+    "email",
+    "address",
+    "phone"
+  ]
+}

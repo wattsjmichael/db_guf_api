@@ -1,0 +1,17 @@
+{
+  "taskId": "id",
+  "count": "Number",
+  "alert": [
+    "reminder",
+    "dueDate",
+    "teamId",
+    "notificationType",
+    [
+      "alertId",
+      "SMS",
+      "email",
+      "calendar Reminder",
+      "teamId"
+    ]
+  ]
+}

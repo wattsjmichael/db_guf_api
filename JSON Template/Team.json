@@ -1,0 +1,17 @@
+{
+  "teamId": "id",
+  "count": "Number",
+  "team": [
+    "name",
+    "email",
+    "phone",
+    "adminId",
+    "teamMember",
+    [
+      "teamId",
+      "name",
+      "role",
+      "email"
+    ]
+  ]
+}

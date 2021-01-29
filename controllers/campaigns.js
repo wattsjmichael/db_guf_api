@@ -1,3 +1,4 @@
+const ErrorResponse = require('../utils/errorResponse')
 const Campaign = require('../models/Campaign')
 // Get All Campaigns
 // GET /api/v1/campaigns
@@ -7,7 +8,7 @@ exports.getCampaigns = async (req, res, next) => {
     const campaigns = await Campaign.find();
     res.status(200).json({ success: true, count: campaigns.length, data: campaigns });
   } catch (err) {
-    res.status(400).json({ success: false });
+    next(err);
   };
 }
 
@@ -19,12 +20,13 @@ exports.getCampaign = async (req, res, next) => {
     const campaign = await Campaign.findById(req.params.id);
 
     if (!campaign) {
-      return res.status(400).json({ success: false });
+      return next(new ErrorResponse(`Campaign not found with id of ${req.params.id}`, 404));
     }
 
     res.status(200).json({ success: true, data: campaign })
   } catch (err) {
-    res.status(400).json({ success: false });
+    //res.status(400).json({ success: false });
+    next(err);
   }
 };
 
@@ -40,7 +42,7 @@ exports.createCampaign = async (req, res, next) => {
       data: campaign
     });
   } catch (err) {
-    res.status(400).json({ success: false });
+    next(err);
   }
 }
 
@@ -55,12 +57,12 @@ exports.updateCampaign = async (req, res, next) => {
     });
 
     if (!campaign) {
-      return res.status(400).json({ success: false });
+      return next(new ErrorResponse(`Campaign not found with id of ${req.params.id}`, 404));
     }
 
     res.status(200).json({ success: true, data: campaign });
   } catch (err) {
-    res.status(400).json({ success: false });
+    next(err);
   }
 }
 
@@ -72,10 +74,10 @@ exports.deleteCampaign = async (req, res, next) => {
     const campaign = await Campaign.findByIdAndDelete(req.params.id);
 
     if (!campaign) {
-      return res.status(400).json({ sucess: false });
+      return next(new ErrorResponse(`Campaign not found with id of ${req.params.id}`, 404));
     }
     res.status(200).json({ success: true, data: {} })
   } catch (err) {
-    res.status(400).json({ success: false });
+    next(err);
   }
 }

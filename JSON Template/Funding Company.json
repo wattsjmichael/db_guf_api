@@ -1,0 +1,57 @@
+{
+  "fundingCompanyId" : "Id",
+  "count" : "Number",
+  "data": [
+    {
+      "management": [
+        "name",
+        "title",
+        "phoneNumber",
+        "email Address",
+        "link to Email",
+        "fundingCompanyId"
+      ],
+      "office": [
+        "mainOffice",
+        [
+          "officeId",
+          "name",
+          "address1",
+          "address2",
+          "city",
+          "zipcode",
+          "county",
+          "phoneNumber",
+          "faxNumber",
+          "officeEmail",
+          "website"
+        ],
+        "branch",
+          [
+            "officeId",
+            "name",
+            "address1",
+            "address2",
+            "city",
+            "zipcode",
+            "county",
+            "phoneNumber",
+            "faxNumber",
+            "officeEmail",
+            "website"
+          ],
+          "description",
+          [
+            "typeOfFirm",
+            [
+              "privateEquity",
+              "publicEntity",
+              "moreExamples"
+            ],
+            "yearFounded",
+            "firmDescription"
+          ]
+        ]
+      }
+    ]
+  }

@@ -1,0 +1,22 @@
+{
+  "opportunityId": "id",
+  "opportunity": [
+    "campaignId",
+    "amount",
+    "status",
+    [
+      "secured",
+      "notSecured",
+      "opportunityId"
+    ],
+    "matchPercentage",
+    [
+      "yes",
+      [
+        "percentage",
+        "matchId"
+      ],
+      "no"
+    ]
+  ]
+}

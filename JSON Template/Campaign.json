@@ -1,0 +1,19 @@
+{
+  "campaignId": "id",
+  "adminId": "id",
+  "teamId": "id",
+  "opportunityId": "id",
+  "count": "Number",
+  "mainCampaign": [
+    "campaignGoal",
+    [
+      "subCampaign",
+      [
+        "campaignId",
+        "goal",
+        "opportunityId",
+        "teamId"
+      ]
+    ]
+  ]
+}
